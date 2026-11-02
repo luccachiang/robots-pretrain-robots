@@ -144,7 +144,7 @@ class Workspace:
         torch.save(sdict, global_snapshot)
 
     def load_snapshot(self, snapshot_path):
-        payload = torch.load(snapshot_path)
+        payload = torch.load(snapshot_path, weights_only=True)
         self.model.load_state_dict(payload['mcr'])
         try:
             self._global_step = payload['global_step']
